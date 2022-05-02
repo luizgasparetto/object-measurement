@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify, Response, send_from_directory
 from scripts.measure_object_size import *
 from flask_cors import CORS, cross_origin
 
-
+# CORS
 app = Flask(__name__)
 CORS(app)
 
