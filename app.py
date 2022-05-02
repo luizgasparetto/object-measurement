@@ -9,7 +9,7 @@ CORS(app)
 @app.route('/', methods=['GET'])
 @cross_origin()
 def home():
-    return Response('Welcome to Object Measurement API')
+    return Response('Welcome to Object Measurement API!')
 
 @app.route("/measurement", methods=["POST"])
 @cross_origin()
