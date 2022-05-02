@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response, send_from_directory
+from flask import Flask, request, jsonify, Response
 from scripts.measure_object_size import *
 from flask_cors import CORS, cross_origin
 
