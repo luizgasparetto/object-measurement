@@ -1,9 +1,18 @@
-from flask import Flask, request, jsonify, Response
+from flask import Flask, request, jsonify, Response, send_from_directory
 from scripts.measure_object_size import *
+from flask_cors import CORS, cross_origin
+
 
 app = Flask(__name__)
+CORS(app)
+
+@app.route('/', methods=['GET'])
+@cross_origin()
+def home():
+    return Response('Welcome to Object Measurement API')
 
 @app.route("/measurement", methods=["POST"])
+@cross_origin()
 def get_metrics():
     body = request.get_json()
 
@@ -19,5 +28,5 @@ def get_metrics():
     except Exception as e:
         return Response(str(e))
 
-
-app.run()
+if __name__ == '__main__':
+    app.run()
