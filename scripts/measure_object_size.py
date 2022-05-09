@@ -20,7 +20,7 @@ def measure_object(image_url):
 
     aruco_perimeter = cv2.arcLength(corners[0], True)
 
-    pixel_cm_ratio = aruco_perimeter / 38  # 40
+    pixel_cm_ratio = aruco_perimeter / 40
 
     contours = detector.detect_objects(img)
 
@@ -34,13 +34,19 @@ def measure_object(image_url):
         obj_width = w / pixel_cm_ratio
         obj_height = h / pixel_cm_ratio
 
-        objects_width.append(round(obj_width * 0.955, 1))
-        objects_height.append(round(obj_height * 0.955, 1))
+        objects_width.append(round(obj_width, 1))
+        objects_height.append(round(obj_height, 1))
 
-    object_measured = Object(objects_width[1], objects_height[1])
+    if objects_width[0] >= 9.7  and objects_width[0] <= 10.2:
+        if objects_height[0] >= 9.7 and objects_height[0] <= 10.2:
+            object_measured = Object(objects_width[1], objects_height[1])
+        else:
+            object_measured = Object(objects_width[1], objects_height[0])
+    else:
+        if objects_height[0] >= 9.7  and objects_height[0] <= 10.2:
+            object_measured = Object(objects_width[0], objects_height[1])
+        else:
+            object_measured = Object(objects_width[0], objects_height[0])
 
     cv2.waitKey(0)
     return object_measured
-
-
-
