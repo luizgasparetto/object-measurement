@@ -37,7 +37,7 @@ def measure_object(image_url):
         objects_width.append(round(obj_width, 1))
         objects_height.append(round(obj_height, 1))
 
-    object_measured = Object(objects_width[1], objects_height[1])
+    object_measured = Object(objects_width[0], objects_height[1])
 
     cv2.waitKey(0)
     return object_measured

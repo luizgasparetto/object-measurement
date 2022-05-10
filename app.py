@@ -17,7 +17,7 @@ def get_metrics():
     body = request.get_json()
 
     try:
-        result = measure_object(body["image_url"])
+        result = measure_object(body["image_url"]) 
 
         data = {
             "width": result.width,
