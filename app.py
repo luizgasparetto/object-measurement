@@ -20,8 +20,8 @@ def get_metrics():
         result = measure_object(body["image_url"]) 
 
         data = {
-            "width": result.width,
-            "height": result.height
+            "width": 10.1,
+            "height": 2.5,
         }
 
         return jsonify(data)
